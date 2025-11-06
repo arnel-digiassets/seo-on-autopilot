@@ -1,0 +1,476 @@
+ס אוטומטי<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קידום אתרים בטייס אוטומטי - Group Verification</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans Hebrew', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .hebrew {
+            direction: rtl;
+            font-family: 'Rubik', 'Noto Sans Hebrew', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            max-width: 450px;
+            width: 100%;
+            padding: 40px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .whatsapp-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .whatsapp-icon {
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-icon svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        .group-name {
+            background: #f8f9fa;
+            padding: 15px 25px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 30px;
+            border: 2px solid #e9ecef;
+        }
+
+        .group-name h2 {
+            color: #495057;
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .group-icon {
+            width: 24px;
+            height: 24px;
+            opacity: 0.6;
+        }
+
+        .verification-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid #e9ecef;
+        }
+
+        .question {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #25d366;
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+        }
+
+        .input-group input::placeholder {
+            color: #adb5bd;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: #25d366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            background: #128c7e;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .info-text {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 13px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            line-height: 1.5;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer-links a {
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #25d366;
+        }
+
+        .footer-links svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+            text-align: center;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            margin-top: 20px;
+        }
+
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #25d366;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .group-name h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- CHANGE THIS: Add 'class="hebrew"' if your title is in Hebrew -->
+            <h1>קידום אתרים בטייס אוטומטי</h1>
+            <p>Please answer the question below to join our WhatsApp group</p>
+        </div>
+
+        <div class="whatsapp-section">
+            <div class="whatsapp-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12.031 1.172c-5.963 0-10.812 4.849-10.812 10.812 0 1.899.491 3.68 1.352 5.231L1.172 22.828l5.795-1.399c1.487.806 3.189 1.265 5.001 1.265 5.963 0 10.812-4.849 10.812-10.812S17.994 1.172 12.031 1.172zm0 19.844c-1.688 0-3.261-.458-4.619-1.252l-.331-.189-3.431.828.844-3.166-.217-.346c-.879-1.405-1.383-3.032-1.383-4.749 0-4.918 4.002-8.92 8.92-8.92s8.92 4.002 8.92 8.92-3.785 8.874-8.703 8.874zm4.893-6.672c-.268-.134-1.587-.783-1.833-.872s-.425-.134-.604.134-.693.872-.849 1.051-.313.201-.581.067c-.268-.134-1.132-.418-2.156-1.332-.797-.712-1.335-1.591-1.491-1.859s-.017-.414.117-.547c.121-.12.268-.313.402-.47s.179-.268.268-.446.045-.335-.022-.469-.604-1.456-.828-1.993c-.218-.522-.44-.452-.604-.46s-.335-.009-.513-.009-.469.067-.715.335-1.162 1.013-1.162 2.47 1.188 2.865 1.354 3.064 2.338 3.571 5.663 5.009c.791.342 1.408.546 1.889.699.794.252 1.516.216 2.087.131.636-.095 1.587-.649 1.81-1.276s.223-.872.156-1.006-.246-.104-.514-.238z"/>
+                </svg>
+            </div>
+
+            <div class="group-name">
+                <!-- CHANGE THIS: Add 'class="hebrew"' if your group name is in Hebrew -->
+                <h2>
+                    <svg class="group-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    קידום אתרים בטייס אוטומטי
+                </h2>
+            </div>
+        </div>
+
+        <div class="verification-box">
+            <div class="question" id="question">What is 8 + 7?</div>
+            <div class="input-group">
+                <input type="text" id="answerInput" placeholder="Enter your answer" autofocus>
+                <div class="error-message" id="errorMessage">Incorrect answer. Please try again.</div>
+            </div>
+        </div>
+
+        <button class="submit-btn" id="submitBtn" onclick="verifyAnswer()">
+            SUBMIT & JOIN GROUP
+        </button>
+        
+        <div class="spinner" id="spinner"></div>
+        
+        <div class="success-message" id="successMessage">
+            ✅ Verification successful! Redirecting to WhatsApp...
+        </div>
+
+        <div class="info-text">
+            This verification helps us prevent spam bots from joining our group
+        </div>
+
+        <div class="footer-links">
+            <a href="#" onclick="showFeedback(); return false;">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>
+                </svg>
+                I have a Feedback
+            </a>
+            <a href="#" onclick="getThisForMyGroup(); return false;">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                </svg>
+                I want this for my group
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // ========== CONFIGURATION - CHANGE THESE VALUES ==========
+        const config = {
+            // CHANGE THIS: Your WhatsApp group name
+            groupName: "קידום אתרים בטייס אוטומטי",
+            
+            // CHANGE THIS: Your WhatsApp group invite link
+            whatsappGroupLink: "https://chat.whatsapp.com/HZWEtsF7BMU9Swmtruzcfj",
+            
+            // OPTIONAL: Customize questions or use the default set
+            questions: [
+                { question: "What is 8 + 7?", answer: "15" },
+                { question: "What is 12 + 9?", answer: "21" },
+                { question: "What is 6 + 15?", answer: "21" },
+                { question: "What is 11 + 8?", answer: "19" },
+                { question: "What is 14 + 13?", answer: "27" },
+                { question: "What is 5 + 9?", answer: "14" },
+                { question: "What is 7 + 6?", answer: "13" },
+                { question: "What is 15 + 11?", answer: "26" },
+                { question: "What is 9 + 14?", answer: "23" },
+                { question: "What is 16 + 7?", answer: "23" },
+                { question: "What is 13 + 12?", answer: "25" },
+                { question: "What is 8 + 13?", answer: "21" },
+                { question: "What is 17 + 5?", answer: "22" },
+                { question: "What is 9 + 9?", answer: "18" },
+                { question: "What is 14 + 8?", answer: "22" },
+                { question: "What is 6 + 11?", answer: "17" },
+                { question: "What is 15 + 13?", answer: "28" },
+                { question: "What is 7 + 12?", answer: "19" },
+                { question: "What is 16 + 14?", answer: "30" },
+                { question: "What is 8 + 8?", answer: "16" },
+                { question: "What is 13 + 6?", answer: "19" },
+                { question: "What is 11 + 11?", answer: "22" },
+                { question: "What is 9 + 7?", answer: "16" },
+                { question: "What is 14 + 15?", answer: "29" },
+                { question: "What is 5 + 13?", answer: "18" },
+                { question: "What is 10 + 10?", answer: "20" },
+                { question: "What is 7 + 17?", answer: "24" },
+                { question: "What is 12 + 12?", answer: "24" },
+                { question: "What is 18 + 6?", answer: "24" },
+                { question: "What is 15 + 9?", answer: "24" }
+            ]
+        };
+        // ========== END OF CONFIGURATION ==========
+
+        // Select random question
+        let currentQuestion = config.questions[Math.floor(Math.random() * config.questions.length)];
+        document.getElementById('question').textContent = currentQuestion.question;
+
+        // Handle Enter key
+        document.getElementById('answerInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                verifyAnswer();
+            }
+        });
+
+        function verifyAnswer() {
+            const answerInput = document.getElementById('answerInput');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('spinner');
+            
+            const userAnswer = answerInput.value.trim();
+            
+            if (userAnswer === '') {
+                showError('Please enter an answer');
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.style.display = 'none';
+            spinner.style.display = 'block';
+            
+            // Simulate verification delay
+            setTimeout(() => {
+                if (userAnswer === currentQuestion.answer) {
+                    // Success
+                    errorMessage.style.display = 'none';
+                    spinner.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    answerInput.disabled = true;
+                    
+                    // Redirect to WhatsApp group after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = config.whatsappGroupLink;
+                    }, 2000);
+                } else {
+                    // Error
+                    showError('Incorrect answer. Please try again.');
+                    spinner.style.display = 'none';
+                    submitBtn.style.display = 'block';
+                    answerInput.value = '';
+                    answerInput.focus();
+                    
+                    // Generate new question after wrong answer
+                    setTimeout(() => {
+                        currentQuestion = config.questions[Math.floor(Math.random() * config.questions.length)];
+                        document.getElementById('question').textContent = currentQuestion.question;
+                    }, 1500);
+                }
+            }, 1000);
+        }
+
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            
+            // Shake animation for input
+            const input = document.getElementById('answerInput');
+            input.style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                input.style.animation = '';
+            }, 500);
+        }
+
+        function showFeedback() {
+            alert('For feedback, please join the group and contact the admin!');
+        }
+
+        function getThisForMyGroup() {
+            alert('To get this verification system for your WhatsApp group, please contact us in the group after joining!');
+        }
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Focus input on page load
+        window.addEventListener('load', () => {
+            document.getElementById('answerInput').focus();
+        });
+    </script>
+</body>
+</html>
